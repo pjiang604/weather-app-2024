@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react"
 import axios from "axios"
+import CurrentWeather from "@/components/CurrentWeather"
+import ForecastWeather from "@/components/ForecastWeather"
 
 export default function Home() {
 
@@ -9,10 +11,9 @@ export default function Home() {
 
   const [value, setValue] = useState<string>()
   const [city, setCity] = useState<string>()
-  const [lat, setLat] = useState<ILat>()
-  const [lon, setLon] = useState<ILon>()
 
-  const apiKey = "269d894cb7c7f6154b9903ccbe4ce7f2"
+
+  const apiKey = process.env.NEXT_PUBLIC_API
 
   useEffect(() => {
     const getGeoData = async () => {
@@ -61,17 +62,15 @@ export default function Home() {
               <div key={index}>
                 {
                   c.name === city ?
-                    <div>
-                      <p>Last updated: !Can't find!</p>
-                      <p>Temp in Celcius:  {c.main.temp}</p>
-                      <ul>Weather main from the api:</ul>
-                      <li>Feels like: {c.main.feels_like}</li>
-                      <li>Humidity: {c.main.humidity}</li>
-                      <li>Pressure: {c.main.pressure}</li>
-                      <li>Max: {c.main.temp_max}</li>
-                      <li>Min: {c.main.temp_min}</li>
-                      <p>Wind speed:{c.wind.speed}</p>
-                    </div>
+                    <CurrentWeather
+                      temperature={c.main?.temp}
+                      feels_like={c.main?.feels_like}
+                      humidity={c.main?.humidity}
+                      pressure={c.main?.pressure}
+                      temp_max={c.main?.temp_max}
+                      temp_min={c.main?.temp_min}
+                      wind_speed={c.wind?.speed}
+                    />
                     :
                     ""
                 }
@@ -94,24 +93,22 @@ export default function Home() {
                       {
                         f.list && f.list.map((l, lindex) => {
                           return (
-                            <div 
-                            key={lindex}
-                            className={`p-2 box-border border-2 rounded-lg`}>
-                              <p>Temp: {l.main.temp.toFixed(1)}</p>
-                              <p>Weather
-                                {
-                                  l.weather && l.weather.map((w, windex) => {
-                                    return (
-                                      <div key={windex}>
-                                        <p>weather main: {w.main}</p>
-                                        <p>weather main: {w.description}</p>
-                                      </div>
-                                    )
-                                  })
-                                }
-                              </p>
-                              <p>wind speed: {l.wind.speed}</p>
-                              <p>date: {`${(new Date(l.dt_txt)).toLocaleString('default', { month: 'short' })} ${(new Date(l.dt_txt)).getDate()}, ${(new Date(l.dt_txt)).getFullYear()}`}</p>
+                            <div key={lindex}>
+                              {
+                                l.weather && l.weather.map((w, windex) => {
+                                  return (
+                                    <div key={windex}>
+                                      <ForecastWeather
+                                        temperature={l.main.temp}
+                                        weather_main={w.main}
+                                        weather_description={w.description}
+                                        wind_speed={l.wind.speed}
+                                        date={l.dt_txt}
+                                      />
+                                    </div>
+                                  )
+                                })
+                              }
                             </div>
                           )
                         })

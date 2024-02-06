@@ -5,9 +5,27 @@ interface IGeoData {
     lon?: number;
 }
 
+interface ICurrentWeather{
+    temperature: number;
+    feels_like: number;
+    humidity: number;
+    pressure: number;
+    temp_max: number;
+    temp_min: number;
+    wind_speed: number;
+}
+
+interface IForecastWeather{
+    temperature: number;
+    weather_main: string;
+    weather_description: string;
+    wind_speed: number;
+    date: number;
+}
+
 
 interface ICityData {
-    name: string;
+    name?: string;
     coord?: {
         lon: number;
         lat: number
@@ -44,7 +62,7 @@ interface IForeData {
             wind: {
                 speed: number;
             },
-            dt_txt: any
+            dt_txt: number
         }
     ]
 }

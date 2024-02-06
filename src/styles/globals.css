@@ -5,9 +5,18 @@
 @tailwind utilities;
 
 :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+
+  --offWhite: #FAFAFA;
+  --lightGrey: #EFE9E7;
+  --lightBlue: #DAE0F2;
+  --darkPurple: #52154E;
+  --darkBlue: #111344;
+
+  --title-height: 75vh;
+
+  --boxShadow-grey: 0.15em 0.30em 0.5em -0.15em rgba(17,19,68,0.75);
+
+
 }
 html{
   font-size: 18px;
@@ -20,7 +29,12 @@ body {
   font-family: 'Poppins', sans-serif;
   width: 100%;
   height: 100%;
-  min-height: 100vh;
+  min-height: 100%;
+
+  background-color: var(--offWhite);
+}
+
+main{
   padding: 5% 10%;
 }
 
@@ -44,4 +58,9 @@ input{
   border: 1px solid black;
   border-radius: 0.5em;
   padding: 0.25em 0.5em;
+}
+
+input:focus{
+  outline: none;
+  border: 0.15em solid var(--darkPurple);
 }

@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 import axios from "axios"
 import CurrentWeather from "@/components/CurrentWeather"
 import ForecastWeather from "@/components/ForecastWeather"
+import Title from "@/components/Title"
 
 export default function Home() {
 
@@ -42,35 +43,52 @@ export default function Home() {
   console.log(cityData, "citydata")
   console.log(foreData, "forecast data")
 
-  //Celsius Calculations
-  const divVal = (5 / 9)
+  //Forecast Date Header Array
+  const test = []
+
 
   return (
-    <main className="">
-      <form action={'/'} onSubmit={e => { e.preventDefault(); setCity(value) }}
-        className={`flex flex-col`}>
-        <label htmlFor="cityInput" className={`flex flex-1`}>
-          <h4>City Name</h4>
-        </label>
-        <input type="text" id="cityInput" name="city" value={value} onChange={e => setValue(e.target.value)} />
-      </form>
-      {city && <h2 className={`text-center`}>Current Weather in <br /> {city}</h2>}
-      <div>
+    <main className="flex flex-col gap-8">
+      <div className={`flex flex-col justify-evenly ${!city ? `h-75vh` : `gap-8 mb-12`}`}>
+
+        <Title />
+        <form action={'/'} onSubmit={e => { e.preventDefault(); setCity(value) }}
+          className={`flex flex-col`}>
+          <label htmlFor="cityInput" className={`flex flex-1`}>
+            <h4>City Name</h4>
+          </label>
+          <input type="text" id="cityInput" name="city" value={value} onChange={e => setValue(e.target.value)} />
+        </form>
+      </div>
+
+      <div className={`flex flex-col gap-4`}>
+        {city && <h2 className={`text-center`}>Current Weather in <br /> {city}</h2>}
         {
           cityData && cityData.map((c, index) => {
             return (
               <div key={index}>
                 {
                   c.name === city ?
-                    <CurrentWeather
-                      temperature={c.main?.temp}
-                      feels_like={c.main?.feels_like}
-                      humidity={c.main?.humidity}
-                      pressure={c.main?.pressure}
-                      temp_max={c.main?.temp_max}
-                      temp_min={c.main?.temp_min}
-                      wind_speed={c.wind?.speed}
-                    />
+                    <div>
+                      {
+                        c.weather && c.weather.map((wId, wIdIndex) => {
+                          return (
+                            <CurrentWeather
+                              key={wIdIndex}
+                              temperature={c.main.temp}
+                              feels_like={c.main.feels_like}
+                              humidity={c.main.humidity}
+                              pressure={c.main.pressure}
+                              temp_max={c.main.temp_max}
+                              temp_min={c.main.temp_min}
+                              wind_speed={c.wind.speed}
+                              update={c.dt}
+                              weather_id={wId.id}
+                            />
+                          )
+                        })
+                      }
+                    </div>
                     :
                     ""
                 }
@@ -80,16 +98,15 @@ export default function Home() {
         }
       </div>
 
-      <div>
+      <div className={`flex flex-col gap-4`}>
         {city && <h2>Weather Forecast</h2>}
         {
           foreData && foreData.map((f, cindex) => {
             return (
-              <div key={cindex}
-              >
+              <div key={cindex}>
                 {
                   f.city.name === city ?
-                    <div className={`flex flex-col gap-2 flex-wrap `}>
+                    <div className={`flex flex-col gap-4 flex-wrap `}>
                       {
                         f.list && f.list.map((l, lindex) => {
                           return (
@@ -97,15 +114,16 @@ export default function Home() {
                               {
                                 l.weather && l.weather.map((w, windex) => {
                                   return (
-                                    <div key={windex}>
                                       <ForecastWeather
+                                      key={windex}
                                         temperature={l.main.temp}
                                         weather_main={w.main}
                                         weather_description={w.description}
                                         wind_speed={l.wind.speed}
                                         date={l.dt_txt}
+                                        time={l.dt_txt}
+                                        weather_id={w.id}
                                       />
-                                    </div>
                                   )
                                 })
                               }

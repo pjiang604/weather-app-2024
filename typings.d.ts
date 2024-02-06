@@ -1,3 +1,7 @@
+interface IHeaderData{
+    city: string
+}
+
 
 interface IGeoData {
     name: string;
@@ -5,7 +9,7 @@ interface IGeoData {
     lon?: number;
 }
 
-interface ICurrentWeather{
+interface ICurrentWeather {
     temperature: number;
     feels_like: number;
     humidity: number;
@@ -13,14 +17,18 @@ interface ICurrentWeather{
     temp_max: number;
     temp_min: number;
     wind_speed: number;
+    update: number
+    weather_id: number
 }
 
-interface IForecastWeather{
+interface IForecastWeather {
     temperature: number;
     weather_main: string;
     weather_description: string;
     wind_speed: number;
     date: number;
+    time: number;
+    weather_id: number;
 }
 
 
@@ -41,7 +49,12 @@ interface ICityData {
         temp_max: number;
         temp_min: number;
     }
-
+    dt: number;
+    weather: [
+        {
+            id: number;
+        }
+    ]
 }
 
 interface IForeData {
@@ -50,6 +63,7 @@ interface IForeData {
     }
     list: [
         {
+            dt: number;
             main: {
                 temp: number;
             },
@@ -57,6 +71,7 @@ interface IForeData {
                 {
                     main: string;
                     description: string;
+                    id: number;
                 }
             ],
             wind: {

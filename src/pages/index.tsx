@@ -8,7 +8,7 @@ import { TextField } from "@mui/material"
 
 export default function Home() {
 
-  const [geoData, setGeoData] = useState<IGeoData[]>([])
+  // const [geoData, setGeoData] = useState<IGeoData[]>([])
   const [cityData, setCityData] = useState<ICityData[]>([])
   const [foreData, setForeData] = useState<IForeData[]>([])
 
@@ -17,38 +17,34 @@ export default function Home() {
 
 
   const apiKey = process.env.NEXT_PUBLIC_API
+  const currentUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`
+  const foreUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}&units=metric`
 
-  useEffect(() => {
-    const getGeoData = async () => {
-      const geoUrl = `http://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=1&appid=${apiKey}`
-      const geoRes = await axios.get(geoUrl);
-      setGeoData(geoRes.data);
-    }
-    getGeoData()
-      .catch(console.error)
-  }, [city])
+  // useEffect(() => {
+  //   const getGeoData = async () => {
+  //     const geoUrl = `http://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=1&appid=${apiKey}`
+  //     const geoRes = await axios.get(geoUrl);
+  //     setGeoData(geoRes.data);
+  //   }
+  //   getGeoData()
+  //     .catch(console.error)
+  // }, [city])
 
   useEffect(() => {
     const getCityData = async () => {
-      const currentUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${geoData[0].lat}&lon=${geoData[0].lon}&appid=${apiKey}&units=metric`
       const cityRes = await axios.get(currentUrl);
       setCityData([cityRes.data])
 
-      const foreUrl = `https://api.openweathermap.org/data/2.5/forecast?lat=${geoData[0].lat}&lon=${geoData[0].lon}&appid=${apiKey}&units=metric`
+
       const foreRes = await axios.get(foreUrl);
       setForeData([foreRes.data])
     }
     getCityData()
       .catch(console.error)
-  }, [geoData])
+  }, [city])
 
   console.log(cityData, "citydata")
   console.log(foreData, "forecast data")
-
-  //Forecast Date Header Array
-  const test = []
-
-
 
   return (
     <main className="flex flex-col gap-8">
@@ -64,6 +60,9 @@ export default function Home() {
         </form>
       </div>
 
+{
+  cityData &&
+  <>
       <div className={`flex flex-col gap-4`}>
         {city && <h2 className={`text-center`}>Current Weather in <br /> {city}</h2>}
         {
@@ -148,6 +147,8 @@ export default function Home() {
           }
         </div>
       </div>
+      </>
+}
       <ScrollTop />
     </main>
   )

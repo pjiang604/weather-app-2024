@@ -3,6 +3,8 @@ import axios from "axios"
 import CurrentWeather from "@/components/CurrentWeather"
 import ForecastWeather from "@/components/ForecastWeather"
 import Title from "@/components/Title"
+import ScrollTop from "@/components/ScrollTop"
+import { TextField } from "@mui/material"
 
 export default function Home() {
 
@@ -49,15 +51,15 @@ export default function Home() {
 
   return (
     <main className="flex flex-col gap-8">
-      <div className={`flex flex-col justify-evenly ${!city ? `h-75vh` : `gap-8 mb-12`}`}>
 
+      <div className={`flex flex-col justify-evenly ${!city ? `h-75vh` : `gap-8 mb-12`}`}>
         <Title />
         <form action={'/'} onSubmit={e => { e.preventDefault(); setCity(value) }}
           className={`flex flex-col`}>
           <label htmlFor="cityInput" className={`flex flex-1`}>
             <h4>City Name</h4>
           </label>
-          <input type="text" id="cityInput" name="city" value={value} onChange={e => setValue(e.target.value)} />
+          <TextField variant="outlined" color="secondary" type="text" id="cityInput" name="city" value={value} onChange={e => setValue(e.target.value)} />
         </form>
       </div>
 
@@ -114,16 +116,16 @@ export default function Home() {
                               {
                                 l.weather && l.weather.map((w, windex) => {
                                   return (
-                                      <ForecastWeather
+                                    <ForecastWeather
                                       key={windex}
-                                        temperature={l.main.temp}
-                                        weather_main={w.main}
-                                        weather_description={w.description}
-                                        wind_speed={l.wind.speed}
-                                        date={l.dt_txt}
-                                        time={l.dt_txt}
-                                        weather_id={w.id}
-                                      />
+                                      temperature={l.main.temp}
+                                      weather_main={w.main}
+                                      weather_description={w.description}
+                                      wind_speed={l.wind.speed}
+                                      date={l.dt_txt}
+                                      time={l.dt_txt}
+                                      weather_id={w.id}
+                                    />
                                   )
                                 })
                               }
@@ -140,9 +142,8 @@ export default function Home() {
             )
           })
         }
-
       </div>
-
+      <ScrollTop/>
     </main>
   )
 }

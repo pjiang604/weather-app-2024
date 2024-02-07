@@ -7,11 +7,13 @@ module.exports = {
   ],
   theme: {
     extend: {
-      backgroundColor: {
+      colors: {
+        "offWhite": "var(--offWhite)",
         "lightGrey": 'var(--lightGrey)',
-        "lightBlue": 'var(--lightBlue)',
+        "lightTeal": 'var(--lightTeal)',
+        "darkTeal": "var(--darkTeal)",
         "darkPurple": 'var(--darkPurple)',
-        "darkBlue": 'var(--darkBlue)'
+        "deepPurple": 'var(--deepPurple)'
       },
       height:{
         "75vh": 'var(--title-height)'

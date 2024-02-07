@@ -8,9 +8,10 @@
 
   --offWhite: #FAFAFA;
   --lightGrey: #EFE9E7;
-  --lightBlue: #DAE0F2;
-  --darkPurple: #52154E;
-  --darkBlue: #111344;
+  --lightTeal: #a277a2;
+  --darkTeal: #904c77;
+  --darkPurple: #5f1c61;
+  --deepPurple: #391c54;
 
   --title-height: 75vh;
 
@@ -30,11 +31,12 @@ body {
   width: 100%;
   height: 100%;
   min-height: 100%;
-
   background-color: var(--offWhite);
 }
 
-main{
+main,
+#header,
+#footer{
   padding: 5% 10%;
 }
 
@@ -55,12 +57,14 @@ h4{
 }
 
 input{
-  border: 1px solid black;
   border-radius: 0.5em;
-  padding: 0.25em 0.5em;
 }
 
 input:focus{
   outline: none;
-  border: 0.15em solid var(--darkPurple);
 }
+
+button{
+  background-color: black;
+}
+

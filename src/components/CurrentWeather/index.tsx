@@ -10,6 +10,7 @@ export default function CurrentWeather({
     wind_speed,
     update,
     weather_id,
+    weather_main,
 }: ICurrentWeather) {
 
     const today = new Date();
@@ -33,15 +34,15 @@ export default function CurrentWeather({
         <>
             <Card className={`flex flex-col gap-2 p-2 rounded-md shadow-grey-shadow
             ${weather_id >= 200 && weather_id < 300 ? `bg-violet-300` : //Thunderstorm
-                    weather_id >= 300 && weather_id < 600 ? `bg-indigo-200` : //Drizzle and Rain
-                        weather_id >= 600 && weather_id < 700 ? `bg-neutral-200` : //Snow
-                            weather_id > 700 && weather_id < 800 ? `bg-darkPurple text-white` : //Atmosphere
+                    weather_id >= 300 && weather_id < 600 ? `bg-violet-100` : //Drizzle and Rain
+                        weather_id >= 600 && weather_id < 700 ? `bg-violet-200` : //Snow
+                            weather_id > 700 && weather_id < 800 ? `bg-violet-400 text-white` : //Atmosphere
                                 weather_id > 800 ? `bg-lightGrey` : `bg-white` //Clouds : Clear
                 }
         `}>
                 <CardMedia
-                        sx={{ height: 140 }}
-                    image="/images/placeholder.png"
+                    sx={{ height: 140 }}
+                    image={`/images/${weather_main}.png`}
                     title="placeholder" />
                 <CardContent>
                     <div>

@@ -75,6 +75,7 @@ export default function Home() {
                       {
                         c.weather && c.weather.map((wId, wIdIndex) => {
                           return (
+                            
                             <CurrentWeather
                               key={wIdIndex}
                               temperature={c.main.temp}
@@ -86,6 +87,7 @@ export default function Home() {
                               wind_speed={c.wind.speed}
                               update={c.dt}
                               weather_id={wId.id}
+                              weather_main={wId.main}
                             />
                           )
                         })

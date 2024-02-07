@@ -7,12 +7,13 @@ export default function ForecastWeather({
     wind_speed,
     date,
     time,
-    weather_id
-
+    weather_id,
 }: IForecastWeather) {
 
     const newDate = `${new Date(date).toLocaleString('default', { month: 'short' })} ${new Date(date).getDate()}, ${new Date(date).getFullYear()}`
     const newTime = `${new Date(time).toLocaleString('en-US', { timeStyle: 'short', hour12: true })}`
+
+
     return (
         <>
             <Card className={`p-2 rounded-md shadow-grey-shadow
@@ -25,7 +26,7 @@ export default function ForecastWeather({
             `}>
                 <CardMedia
                     sx={{ height: 140 }}
-                    image="/images/placeholder.png"
+                    image={`/images/${weather_main}.png`}
                     title="placeholder" />
                 <CardContent>
                     <h4 className={`text-center`}>{newDate} {newTime}</h4>

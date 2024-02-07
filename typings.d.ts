@@ -1,4 +1,4 @@
-interface IHeaderData{
+interface IHeaderData {
     city: string
 }
 
@@ -17,8 +17,9 @@ interface ICurrentWeather {
     temp_max: number;
     temp_min: number;
     wind_speed: number;
-    update: number
-    weather_id: number
+    update: number;
+    weather_id: number;
+    weather_main;
 }
 
 interface IForecastWeather {
@@ -53,6 +54,7 @@ interface ICityData {
     weather: [
         {
             id: number;
+            main: string;
         }
     ]
 }
@@ -88,4 +90,13 @@ interface ILat {
 
 interface ILon {
     lon: number;
+}
+
+interface IImages {
+    url: string;
+    weather: string;
+}
+
+interface IImageData {
+    imgUrl: string;
 }

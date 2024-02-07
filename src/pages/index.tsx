@@ -72,7 +72,7 @@ export default function Home() {
               <div key={index}>
                 {
                   c.name === city ?
-                    <div>
+                    <div className={`flex flex-row justify-center`}>
                       {
                         c.weather && c.weather.map((wId, wIdIndex) => {
                           return (
@@ -104,46 +104,49 @@ export default function Home() {
 
       <div className={`flex flex-col gap-4`}>
         {city && <h2>Weather Forecast</h2>}
-        {
-          foreData && foreData.map((f, cindex) => {
-            return (
-              <div key={cindex}>
-                {
-                  f.city.name === city ?
-                    <div className={`flex flex-col gap-4 flex-wrap `}>
-                      {
-                        f.list && f.list.map((l, lindex) => {
-                          return (
-                            <div key={lindex}>
-                              {
-                                l.weather && l.weather.map((w, windex) => {
-                                  return (
-                                    <ForecastWeather
-                                      key={windex}
-                                      temperature={l.main.temp}
-                                      weather_main={w.main}
-                                      weather_description={w.description}
-                                      wind_speed={l.wind.speed}
-                                      date={l.dt_txt}
-                                      time={l.dt_txt}
-                                      weather_id={w.id}
-                                    />
-                                  )
-                                })
-                              }
-                            </div>
-                          )
-                        })
-                      }
 
-                    </div>
-                    :
-                    ""
-                }
-              </div>
-            )
-          })
-        }
+        <div className={`flex flex-row wrap`}>
+          {
+            foreData && foreData.map((f, cindex) => {
+              return (
+                <div key={cindex} className={`w-full`}>
+                  {
+                    f.city.name === city ?
+                      <div className={`flex flex-col gap-4 md:flex-row flex-wrap w-full `}>
+                        {
+                          f.list && f.list.map((l, lindex) => {
+                            return (
+                              <div key={lindex} className={`w-full md:w-half lg:w-quarter`}>
+                                {
+                                  l.weather && l.weather.map((w, windex) => {
+                                    return (
+                                      <ForecastWeather
+                                        key={windex}
+                                        temperature={l.main.temp}
+                                        weather_main={w.main}
+                                        weather_description={w.description}
+                                        wind_speed={l.wind.speed}
+                                        date={l.dt_txt}
+                                        time={l.dt_txt}
+                                        weather_id={w.id}
+                                      />
+                                    )
+                                  })
+                                }
+                              </div>
+                            )
+                          })
+                        }
+
+                      </div>
+                      :
+                      ""
+                  }
+                </div>
+              )
+            })
+          }
+        </div>
       </div>
       <ScrollTop />
     </main>

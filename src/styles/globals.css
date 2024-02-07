@@ -16,7 +16,8 @@
   --title-height: 75vh;
 
   --boxShadow-grey: 0.15em 0.30em 0.5em -0.15em rgba(17,19,68,0.75);
-
+  --half: 48%;
+  --quarter: 23%;
 }
 html{
   font-size: 18px;
@@ -71,3 +72,22 @@ button{
   max-width: 33%;
 }
 
+@media (min-width: 768px) {
+  main,
+  #header,
+  #footer{
+    padding: 2% 10%;
+  }
+
+    #header-logo{
+      max-width: 20%;
+    }
+
+}
+
+@media (min-width: 1024px) {
+  #header-logo{
+    max-width: 10%;
+  }
+
+}

@@ -20,6 +20,14 @@ module.exports = {
       },
       boxShadow: {
         "grey-shadow": 'var(  --boxShadow-grey)'
+      },
+      maxWidth: {
+        "half": "var(--half)",
+        "quarter": "var(--quarter)"
+      },
+      width: {
+        "half": "var(--half)",
+        "quarter": "var(--quarter)"
       }
     },
   },

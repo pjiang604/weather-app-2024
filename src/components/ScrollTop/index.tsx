@@ -7,7 +7,7 @@ export default function ScrollTop() {
             zIndex: 10,
             bottom: "5em"
         }}>
-            <span className={`bg-lightTeal p-6 rounded-full`}>UP</span>
+            <span className={`bg-lightTeal p-6 rounded-full`}>Top</span>
         </ScrollToTop>
     )
 }

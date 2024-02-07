@@ -2,13 +2,6 @@ interface IHeaderData {
     city: string
 }
 
-
-interface IGeoData {
-    name: string;
-    lat?: number;
-    lon?: number;
-}
-
 interface ICurrentWeather {
     temperature: number;
     feels_like: number;

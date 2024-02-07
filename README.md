@@ -14,5 +14,5 @@ Jiang, Patricia
 - [Axios](https://www.npmjs.com/package/axios)
 
 ### UI Dependencies
-- [react-scroll-up](npm install react-scroll-up)
+- [react-scroll-up](https://www.npmjs.com/package/react-scroll-up)
 - [MaterialUI](https://mui.com/material-ui/getting-started/installation/)

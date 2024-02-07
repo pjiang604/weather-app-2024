@@ -42,8 +42,8 @@ export default function Home() {
       .catch(console.error)
   }, [geoData])
 
-  // console.log(cityData, "citydata")
-  // console.log(foreData, "forecast data")
+  console.log(cityData, "citydata")
+  console.log(foreData, "forecast data")
 
   //Forecast Date Header Array
   const test = []

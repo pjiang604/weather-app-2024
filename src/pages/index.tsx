@@ -53,9 +53,9 @@ export default function Home() {
       <div className={`flex flex-col justify-evenly ${!city ? `h-75vh` : `gap-8 mb-12`}`}>
         <Title />
         <div className={`flex justify-center w-full`}>
-          <form 
-          className={`flex flex-col`}
-          action={'/'} onSubmit={e => { e.preventDefault(); value && setCity(value.substring(0, 1).toUpperCase() + value.substring(1)) }}>
+          <form
+            className={`flex flex-col`}
+            action={'/'} onSubmit={e => { e.preventDefault(); value && setCity(value.substring(0, 1).toUpperCase() + value.substring(1)) }}>
             <label htmlFor="cityInput" className={`flex flex-1`}>
               <h4>City Name</h4>
             </label>
@@ -64,6 +64,7 @@ export default function Home() {
         </div>
 
       </div>
+
       {
         error ?
           <div className={`flex flex-col items-center`}>
@@ -92,33 +93,27 @@ export default function Home() {
                           {
                             cityData && cityData.map((c, index) => {
                               return (
-                                <div key={index}>
+                                <div key={index} className={`flex justify-center`}>
                                   {
-                                    c.name === city ?
-                                      <div className={`flex flex-row justify-center`}>
-                                        {
-                                          c.weather && c.weather.map((wId, wIdIndex) => {
-                                            return (
-                                              <CurrentWeather
-                                                key={wIdIndex}
-                                                temperature={c.main.temp}
-                                                feels_like={c.main.feels_like}
-                                                humidity={c.main.humidity}
-                                                pressure={c.main.pressure}
-                                                temp_max={c.main.temp_max}
-                                                temp_min={c.main.temp_min}
-                                                wind_speed={c.wind.speed}
-                                                update={c.dt}
-                                                weather_id={wId.id}
-                                                weather_main={wId.main}
-                                              />
-                                            )
-                                          })
-                                        }
-                                      </div>
-                                      :
-                                      ""
+                                    c.weather && c.weather.map((w, wIndex) => {
+                                      return (
+                                        <CurrentWeather
+                                          key={wIndex}
+                                          temperature={c.main.temp}
+                                          feels_like={c.main.feels_like}
+                                          humidity={c.main.humidity}
+                                          pressure={c.main.pressure}
+                                          temp_max={c.main.temp_max}
+                                          temp_min={c.main.temp_min}
+                                          wind_speed={c.wind.speed}
+                                          update={c.dt}
+                                          weather_id={w.id}
+                                          weather_main={w.main}
+                                        />
+                                      )
+                                    })
                                   }
+
                                 </div>
                               )
                             })
@@ -162,7 +157,7 @@ export default function Home() {
 
                                         </div>
                                         :
-                                        ""
+                                        <p>No weather information available!</p>
                                     }
                                   </div>
                                 )

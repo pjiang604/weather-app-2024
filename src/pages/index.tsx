@@ -35,9 +35,10 @@ export default function Home() {
 
         const foreRes = await axios.get(foreUrl);
         setForeData([foreRes.data])
+
       } catch (error) {
-        // console.error(error)
         setError(true)
+
       } finally {
         setDataLoading(false)
 
@@ -45,11 +46,6 @@ export default function Home() {
     }
     getCityData()
   }, [city])
-
-  console.log(cityData, "citydata")
-  console.log(foreData, "forecast data")
-  console.log(dataLoading, "data loading")
-  console.log(value, "value")
 
   return (
     <main className="flex flex-col gap-8">

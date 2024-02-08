@@ -8,9 +8,10 @@ export default function Title() {
             <Image
                 src={logoDark}
                 alt="Nimbus logo"
+                className={`max-w-three-quarter`}
             />
             <div>
-                <p>Your weather.</p>
+                <h3>Your weather.</h3>
                 <p>Straight from the cloud.</p>
             </div>
 

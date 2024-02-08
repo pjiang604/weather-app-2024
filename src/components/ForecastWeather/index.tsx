@@ -1,4 +1,5 @@
 import { Card, CardContent, CardMedia } from "@mui/material";
+import styles from './forecastWeather.module.css'
 
 export default function ForecastWeather({
     temperature,
@@ -30,9 +31,17 @@ export default function ForecastWeather({
                     title="placeholder" />
                 <CardContent>
                     <h4 className={`text-center`}>{newDate} {newTime}</h4>
-                    <p>Temperature:  {temperature.toFixed(1)}°C</p>
-                    <p>Weather: {weather_main} ({weather_description})</p>
-                    <p>Wind speed: {wind_speed} meters/sec</p>
+                    <h1 className={`text-center my-4`}>{temperature.toFixed(1)}°C</h1>
+                    <div className={styles.infoContainer}>
+                        <div className={styles.infoCard}>
+                            <p>Weather</p>
+                            <p>{weather_main},<br/>{weather_description}</p>
+                        </div>
+                        <div className={styles.infoCard}>
+                            <p>Wind</p>
+                            <p>{wind_speed}<br/>meters/sec</p>
+                        </div>
+                    </div>
                 </CardContent>
 
 

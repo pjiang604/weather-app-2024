@@ -1,4 +1,5 @@
 import { Card, CardContent, CardMedia } from "@mui/material";
+import styles from './currentWeather.module.css'
 
 export default function CurrentWeather({
     temperature,
@@ -44,26 +45,42 @@ export default function CurrentWeather({
                     image={`/images/${weather_main}.png`}
                     title="placeholder" />
                 <CardContent>
+
                     <div>
                         <h4 className={`text-center`}>{newDate} at {newTime}</h4>
                     </div>
                     <div>
-                        <p>Current Temperature:  {temperature}°C</p>
-                        <p>Feels Like: {feels_like}°C</p>
-                        <p>A temperature high of: {temp_max}°C</p>
-                        <p>A temperature low of: {temp_min}°C</p>
-                    </div>
-                    <div>
-                        <p>Humidity: {humidity}%</p>
-                        <p>Pressure: {pressure} hPa</p>
-                        <p>Wind speed: {wind_speed} meters/sec</p>
-                    </div>
-                    <p>Last updated: {newUpdate}</p>
+                        <h1 className={`text-center my-4`}>{temperature}°C</h1>
+                        <div className={styles.infoContainer}>
+                            <div className={styles.infoCard}>
+                                <p>High</p>
+                                <p>{temp_max}°C</p>
+                            </div>
+                            <div className={styles.infoCard}>
+                                <p>Low</p>
+                                <p>{temp_min}°C</p>
+                            </div>
+                            <div className={styles.infoCard}>
+                                <p>Feels Like</p>
+                                <p>{feels_like}°C</p>
+                            </div>
+                            <div className={styles.infoCard}>
+                                <p>Humidity</p>
+                                <p>{humidity}%</p>
+                            </div>
+                            <div className={styles.infoCard}>
+                                <p>Pressure</p>
+                                <p>{pressure} hPa</p>
+                            </div>
 
+                        </div>
+                        <div className={styles.windCard}>
+                                <p>Wind</p>
+                                <p>{wind_speed} meters/sec</p>
+                            </div>
+                    </div>
+                    <p className={styles.updatedCard}>Updated: {newUpdate}</p>
                 </CardContent>
-
-
-
             </Card >
         </>
     )

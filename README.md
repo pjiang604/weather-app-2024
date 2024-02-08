@@ -4,6 +4,7 @@
 Jiang, Patricia
 
 ## Description
+Nimbus is a responsive web app that allows users to type in a city to view the current weather and forecasted weather (a 5-day forecast every three hours) in that location. Simple and engaging imagery along with changes in background color are used to help inform the user about the weather in an efficient manner. NextJS and Typescript were used to build this application.
 
 ## Dependencies
 ### API Dependencies

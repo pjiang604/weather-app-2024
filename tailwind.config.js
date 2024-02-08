@@ -22,12 +22,19 @@ module.exports = {
         "grey-shadow": 'var(  --boxShadow-grey)'
       },
       maxWidth: {
+        "three-quarter": "var(--three-quarter)",
         "half": "var(--half)",
+        "third": "var(--third)",
         "quarter": "var(--quarter)"
       },
       width: {
+        "three-quarter": "var(--three-quarter)",
         "half": "var(--half)",
+        "third": "var(--third)",
         "quarter": "var(--quarter)"
+      },
+      padding:{
+        "oneEm": "var(--oneEm)"
       }
     },
   },

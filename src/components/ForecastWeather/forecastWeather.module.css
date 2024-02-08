@@ -1,0 +1,17 @@
+.infoContainer{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 0.5em;
+
+}
+
+.infoCard{
+    flex: 1;
+    justify-content: center;
+    text-align: center;
+}
+
+.infoCard > p:first-of-type{
+    font-weight: 600;
+}

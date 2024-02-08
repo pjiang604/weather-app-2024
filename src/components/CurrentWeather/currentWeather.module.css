@@ -1,0 +1,28 @@
+.infoContainer{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 1em;
+
+}
+
+.infoCard,
+.windCard{
+    flex: 1;
+    justify-content: center;
+    text-align: center;
+}
+
+.windCard{
+    margin-top: 1em;
+}
+
+.infoCard > p:first-of-type,
+.windCard > p:first-of-type{
+    font-weight: 600;
+}
+
+.updatedCard{
+    margin-top: 1em;
+}
+
